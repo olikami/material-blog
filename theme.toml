@@ -1,0 +1,16 @@
+name = "Material Blog"
+license = "MIT"
+licenselink = "oli.kamer.ch"
+description = "A material theme "
+homepage = "https://oli.kamer.ch"
+tags = ["blog", "material design", "modern", "responsive", ]
+features = ["blog", pages]
+min_version = 0.36
+
+[author]
+  name = "Oliver Kamer"
+  homepage = "https://github.com/vimux"
+
+[imaging]
+	# See https://github.com/disintegration/imaging
+	resampleFilter = "lanczos"
