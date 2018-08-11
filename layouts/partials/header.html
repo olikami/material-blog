@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+    <head>
+        <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>{{ if ne .Title .Site.Title}}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+        {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+	    {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+	    {{ if .RSSLink -}}<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
+	    {{ .Hugo.Generator }}
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css"  media="screen,projection"/>
+    </head>
+<body class="grey lighten-4">
+	{{ partial "navbar.html" . }}

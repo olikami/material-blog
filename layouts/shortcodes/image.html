@@ -1,0 +1,4 @@
+{{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get "img")) }}
+<a href="{{ $original.RelPermalink }}">
+	<img src="{{ ($original.Resize "1232x").RelPermalink }}" class="responsive-img"  {{ with .Get "byline" }} data-caption="{{.}}" {{ end }}>
+</a>

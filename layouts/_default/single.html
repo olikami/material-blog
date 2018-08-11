@@ -1,0 +1,58 @@
+{{ partial "header.html" . }}
+	<main class="container">
+		<div class="card white">
+			{{ range first 1 (.Resources.ByType "image") }}
+			<div class="card-image">
+				<img src="{{ (.Fill "1280x640").RelPermalink }}">
+			</div>
+			{{ end }}
+			<div class="card-content">
+				<h1>{{ .Title }}</h1>
+				{{ if eq .Type "post" }}
+				<div class="divider"></div>
+				<div class="section">
+					<i class="material-icons inline">date_range</i>
+					<time class="timeago" datetime="{{ .Date.Format "2006-01-02T15:04:05Z" }}">{{ .Date.Format "02.01.2006 15:04" }}</time>
+					|
+					<i class="material-icons inline">comment</i>
+					<span>{{ .WordCount }}{{ if eq .WordCount 1 }} Wort {{ else }} Wörter {{ end }}</span>
+					|
+					<i class="material-icons inline">access_time</i>
+					<span>{{ if eq .ReadingTime 1 }} ~1 Minute {{ else }} {{ .ReadingTime }} Minuten {{ end }}</span>
+				</div>
+				{{ end }}
+				<div class="divider"></div>
+				<div class="section content">
+					{{ .Content }}
+				</div>
+			</div>
+
+		</div>
+		{{ if eq .Section "post" }}
+		<div class="row">
+			<div class="col s6 left-align">
+				{{ if .NextInSection }}
+				<a class="btn-floating waves-effect waves-light tooltipped" data-position="right" data-delay="50" data-tooltip="{{ .NextInSection.Title }}" href="{{ .NextInSection.RelPermalink }}">
+					<i class="material-icons">chevron_left</i>
+				</a>
+				{{ else }}
+				<a class="btn-floating disabled" href="#!">
+					<i class="material-icons">chevron_left</i>
+				</a>
+				{{ end }}
+			</div>
+			<div class="col s6 right-align">
+				{{ if .PrevInSection }}
+				<a class="btn-floating waves-effect waves-light tooltipped" data-position="left" data-delay="50" data-tooltip="{{ .PrevInSection.Title }}" href="{{ .PrevInSection.RelPermalink }}">
+					<i class="material-icons">chevron_right</i>
+				</a>
+				{{ else }}
+				<a class="btn-floating disabled" href="#!">
+					<i class="material-icons">chevron_right</i>
+				</a>
+				{{ end }}
+			</div>
+		</div>
+		{{ end }}
+	</main>
+{{ partial "footer.html" . }}

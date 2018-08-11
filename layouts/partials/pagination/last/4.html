@@ -1,0 +1,14 @@
+{{ $page := .Paginator }}
+<li class="waves-effect">
+	<a href="{{ $page.First.URL }}">
+		{{ $page.First.PageNumber }}
+	</a>
+</li>
+<li class="disabled"><a href="#!">...</a></li>
+{{ range last 5 $page.Pagers }}
+<li class="{{ if eq . $page }}active{{ else }}waves-effect{{ end }}">
+	<a href="{{ .URL }}">
+		{{ .PageNumber }}
+	</a>
+</li>
+{{ end }}

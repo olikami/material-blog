@@ -1,0 +1,34 @@
+<div class="slider">
+    <ul class="slides">
+      <li>
+        {{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get 0 )) }}
+        {{ .Scratch.Set "image" ($original.Fill "800x400") }}
+        {{ $image := .Scratch.Get "image" }}
+        <img src="{{ $image.RelPermalink }}">
+      </li>
+      <li>
+        {{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get 1 )) }}
+        {{ .Scratch.Set "image" ($original.Fill "800x400") }}
+        {{ $image := .Scratch.Get "image" }}
+        <img src="{{ $image.RelPermalink }}">
+      </li>
+      <li>
+        {{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get 2 )) }}
+        {{ .Scratch.Set "image" ($original.Fill "800x400") }}
+        {{ $image := .Scratch.Get "image" }}
+        <img src="{{ $image.RelPermalink }}">
+      </li>
+      <li>
+        {{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get 3 )) }}
+        {{ .Scratch.Set "image" ($original.Fill "800x400") }}
+        {{ $image := .Scratch.Get "image" }}
+        <img src="{{ $image.RelPermalink }}">
+      </li>
+      <li>
+        {{ $original := .Page.Resources.GetMatch (printf "%s*" (.Get 4 )) }}
+        {{ .Scratch.Set "image" ($original.Fill "800x400") }}
+        {{ $image := .Scratch.Get "image" }}
+        <img src="{{ $image.RelPermalink }}">
+      </li>
+    </ul>
+  </div>

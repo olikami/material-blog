@@ -1,0 +1,90 @@
+	    <footer class="page-footer indigo">
+            {{ if .IsHome }}
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">{{ .Site.Params.description }}</h5>
+                        <p class="grey-text text-lighten-4">
+                            {{ .Site.Params.outro}}
+                        </p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            {{ range .Site.Menus.footer }}
+                            <li>
+                                <a class="grey-text text-lighten-3" href="{{ .URL }}">{{ .Name }}</a>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            <div class="footer-copyright">
+                <div class="container">
+                    &copy; {{ now.Year }} {{ .Site.Params.author }}
+                </div>
+            </div>
+        </footer>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/materialize.min.js"></script>
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/materialize.min.js"></script>
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/jquery.timeago.js"></script>
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/jquery.timeago.de.js"></script>
+        <script tpye="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery("time.timeago").timeago();
+        });
+        </script>
+        {{ if and (.IsNode) (ne .Kind "404") }}
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/masonry.pkgd.min.js"></script>
+        <script type="text/javascript" src="{{ .Site.BaseURL }}js/imagesloaded.pkgd.min.js"></script>
+        <script type="text/javascript">
+            // Masonery activation
+            var $grid = $('.row').masonry({
+                itemSelector: '.col',
+                columnWidth: '.col',
+                percentPosition: true
+            });
+            // Reload masonery when image loaded
+            $grid.imagesLoaded().progress( function() {
+                $grid.masonry('layout');
+            });
+
+            // Click on the card
+            $(".card").click(function() {
+                window.location = $(this).find("a").attr("href"); 
+                return false;
+            });
+        </script>
+        {{ else }}
+        <script type="text/javascript">
+            $(".section.content ul").addClass("browser-default");
+        </script>
+        {{ end }}
+
+        <script type="text/javascript">
+            // Navbar
+            $( document ).ready(function() {
+                $(".button-collapse").sideNav();
+                $('.slider').slider();
+            });
+
+            // Divider
+            $( "hr" ).replaceWith( "<div class=\"divider\"></div>" );
+        </script>
+        {{ with .Site.Params.analytics }}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115471184-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '{{.}}', { 'anonymize_ip': true });
+        </script>
+        {{ end }}
+    </body>
+</html>

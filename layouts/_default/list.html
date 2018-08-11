@@ -1,0 +1,17 @@
+{{ partial "header.html" . }}
+	<div class="container">
+        <div class="row">
+            {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+            {{ range $paginator.Pages }}
+                {{ partial "summary.html" . }}
+            {{ end }}
+        </div>
+    
+		
+        <div class="row section">
+            <div class="col s12">
+                {{ partial "pagination.html" . }}
+            </div>
+        </div>
+	</div>
+{{ partial "footer.html" . }}

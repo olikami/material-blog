@@ -1,0 +1,16 @@
+{{ $page := .Paginator }}
+{{ if le $page.PageNumber 2 }}
+	{{ partial "pagination/first/2.html" .}}
+{{ else if le $page.PageNumber 3 }}
+	{{ partial "pagination/first/3.html" .}}
+{{ else if le $page.PageNumber 4 }}
+	{{ partial "pagination/first/4.html" .}}
+{{ else if le $page.PageNumber 4 }}
+	{{ partial "pagination/first/4.html" .}}
+{{ else if ge $page.PageNumber (sub $page.TotalPages 1)}}
+	{{ partial "pagination/last/2.html" .}}
+{{ else if ge $page.PageNumber (sub $page.TotalPages 2)}}
+	{{ partial "pagination/last/3.html" .}}
+{{ else }}
+	{{ partial "pagination/middle.html" .}}
+{{ end }}

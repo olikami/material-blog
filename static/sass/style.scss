@@ -1,0 +1,89 @@
+@import "materialize.scss";
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.material-icons.inline {
+    font-size:inherit;
+}
+
+.card {
+
+	.card-action a {
+    	color: inherit;
+	}
+
+	.card-content .content p  {
+		margin-top: 1rem;
+        margin-bottom: 1rem;
+
+	}
+
+}
+
+
+.brand-logo img {
+    display: inline-block;
+    height: 2.5rem;
+    vertical-align: middle;
+}
+
+.container .card {
+    margin-top: 2.1rem;
+}
+
+.row .summary.col {
+    padding: .75rem;
+
+    .card {
+        margin: 0;
+    }
+}
+
+.responsive-img {
+    margin-top: 1rem;
+}
+
+.section.content{
+    img {
+
+        &.left &.right {
+            max-width: 25%;
+            height: auto;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        &.left {
+            float: left;
+            margin-right: 1rem;
+        }
+
+        &.right {
+            float: right;
+            margin-left: 1rem;
+        }  
+
+        &.active {
+            max-width: inherit;
+        }
+    }
+}
+
+// Navbar fix
+#sidenav-overlay {
+    z-index: inherit;
+}
+
+// Pagination
+
+.pagination input {
+    width: auto;
+}
